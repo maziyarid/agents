@@ -3,10 +3,10 @@ name: qalam-writing-agent
 description: >
   Single entrypoint for Maziyar's writing, editorial, UX-copy and content work.
   Qalam loads the canonical Art of Writing Bible, recalls project memory,
-  retrieves evidence only when needed, applies domain/site overlays, verifies
-  the result, and writes durable outcomes back to memory. Use Qalam instead of
-  manually @mentioning many writing/research/memory tools.
-version: 1.0.0
+  retrieves evidence only when needed, applies domain/locale/site overlays,
+  verifies the result, and writes durable outcomes back to memory. Use Qalam
+  instead of manually @mentioning many writing/research/memory tools.
+version: 1.1.0
 date: 2026-09-15
 status: canonical-router
 ---
@@ -17,7 +17,7 @@ Qalam is **not an app and not a voice model**. It is the orchestration layer aro
 
 ## Mandatory task order
 
-`understand → recall → route → research → write/edit → verify → persist`
+`understand → recall → load writing stack → route → research → write/edit → verify → persist`
 
 ### 1. Understand
 
@@ -32,18 +32,27 @@ For substantial project-bound work:
 
 Do not ask the user to repeat information that memory can recover. Current explicit instruction always wins.
 
-### 3. Load the writing engine
+### 3. Load the writing stack
 
 Load canonical `art-of-writing-bible` latest version plus only the required overlay:
 
-- academic → ACADEMIC_READABLE
-- methodology/statistics → RESEARCH_GUIDE
-- service → SERVICE_PAGE_NATURAL
-- product/UI/landing → UX_WRITING_FA_IR
+- academic → `ACADEMIC_READABLE`
+- methodology/statistics → `RESEARCH_GUIDE`
+- service → `SERVICE_PAGE_NATURAL`
+- product/UI/landing → `UX_WRITING_FA_IR`
 - medical → medical domain overlay + fact-check layer
 - English → native British-English overlay
 
-Then load site-specific policy.
+For Iran-targeted product/UI/form/service/landing work, load in this order:
+
+1. Art of Writing Bible;
+2. `UX_WRITING_FA_IR`;
+3. `writing/art-of-writing-bible/references/fa-ir-product-lexicon.md` (or the Content Factory `fa-IR Product Lexicon` operational copy);
+4. the current site/product policy.
+
+The site/product layer is last because site-approved or user-tested terminology can override the baseline lexicon. On Teznevise, the site-specific 0-U+200C rule overrides general Persian orthography.
+
+Unknown locale-sensitive wording must be marked for review rather than silently replaced. Do not describe legitimate Dari/Persian vocabulary as inherently wrong; the criterion is fit for the target product audience.
 
 ### 4. Route tools by role
 
@@ -73,13 +82,22 @@ Use the smallest set that can answer reliably. One source/tool per role first; a
 
 ### 6. Write/edit
 
-Follow the Art of Writing Bible. For Persian product/landing copy, target `fa-IR` explicitly and run the UX overlay.
+Follow the Art of Writing Bible and the resolved overlay/locale/site stack. For an existing canonical page, prefer a surgical patch unless a full rewrite is explicitly justified.
+
+For Persian product/landing copy:
+
+- target `fa-IR` explicitly;
+- use the UX overlay and product lexicon;
+- name actions by their real next result;
+- keep trust claims scoped and supportable;
+- review locale-sensitive terms rather than guessing.
 
 ### 7. Verify independently
 
 Separate:
 
 - language/register/UX QA;
+- locale/terminology QA when relevant;
 - factual/evidence QA;
 - SEO/canonical QA;
 - technical/rendered-interface QA when applicable.
